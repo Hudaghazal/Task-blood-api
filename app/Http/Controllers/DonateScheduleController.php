@@ -21,7 +21,7 @@ class DonateScheduleController extends Controller
      */
     public function index()
     {
-       $donate= donate_schedule::with('User',' BloodType')->get();
+       $donate= donate_schedule::with('User','BloodType')->get();
        return response()->json([
         "message"=> "fetch data success!",
         "data"=> $donate,
@@ -64,9 +64,8 @@ class DonateScheduleController extends Controller
      * @param  \App\Models\donate_schedule  $donate_schedule
      * @return \Illuminate\Http\Response
      */
-    public function show( $schedule_id)
+    public function show($schedule_id)
     {
-
      $schedule = donate_schedule::where('id','=',$schedule_id)->with('User','BloodType')->get();
      return response()->json([
         "message"=> "Fetch data successfully!",
