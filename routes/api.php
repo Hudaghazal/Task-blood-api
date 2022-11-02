@@ -27,8 +27,6 @@ Route::controller(DonateScheduleController::class)->middleware('auth')->group(fu
     Route::post('donate','store');
     Route::get('donate/{schedule_id}','show');
     Route::post('donate/{schedule_id}','update');
-    Route::get('donate/delete/{schedule_id}','destroy');
-
-
+    Route::delete('donate/{schedule_id}','destroy');
 });
 
