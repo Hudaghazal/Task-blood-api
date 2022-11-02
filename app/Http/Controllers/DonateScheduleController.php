@@ -102,8 +102,10 @@ class DonateScheduleController extends Controller
      * @param  \App\Models\donate_schedule  $donate_schedule
      * @return \Illuminate\Http\Response
      */
-    public function destroy(donate_schedule $donate_schedule)
+    public function destroy($schedule_id)
     {
-        donate_schedule::where('id','=',$donate_schedule)->delete();
-    }
+        donate_schedule::where('id','=',$schedule_id)->with('User','BloodType')->delete();
+        return response()->json([
+            "message"=> "deleted  successfully!",
+           ]);    }
 }
